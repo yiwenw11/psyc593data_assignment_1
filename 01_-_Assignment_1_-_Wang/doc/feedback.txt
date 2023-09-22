@@ -1,0 +1,33 @@
+Comments from peer review:
+
+Folders are organized correctly, and the new codes and existing codes 
+follow the tidyverse style. 
+
+I suggest adding code chunk name for each code chunk. 
+Also, it seems like the answer for question 6 is missing.
+Aside from these, everything else looks great! 
+
+
+
+Comments from instructor:
+
+Remember not to save the all environment into a .Rdata file.
+Only use file.Rdata explicitly within the code to save large/slow
+computations and always to store single objects, not the whole
+environment. 
+
+You may also add extra spaces to align code elements. for example you 
+can align the assignment operators on lines 73-75. 
+
+It is good you took the code for writing paths relative to the root of 
+the project. However, the example should several alternatives; it would be
+preferable that you choose one of them rather than mixing them. 
+
+Lastly the argument popP is not named in accordance to the style. You may
+change it to pop_prop. 
+
+You did an excellent job adjusting to the style
+and adding the figures is a great idea to make those comparisons easier
+to perform. Note however, that the x-axis is not correctly ordered by
+age group. Also, the comparisons between countries would be easier if
+you put together the lines for Kenya and Sweden on the same plot.
