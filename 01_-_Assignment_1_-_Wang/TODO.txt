@@ -1,0 +1,7 @@
+1. adding the chunk name
+2. add answer for question 6
+3. align code
+4. path
+5. popP
+6. change the graph
+7. environment
