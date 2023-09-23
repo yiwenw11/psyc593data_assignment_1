@@ -95,7 +95,7 @@ Compute the CBR for each period, separately for Kenya, Sweden, and the world. St
 
 ### Answer 1
 
-```{r}
+```{r create-py}
 # Create new variable py = total person years for each data set
 world_data$py <- world_data$py.men + world_data$py.women
 kenya_data$py <- kenya_data$py.men + kenya_data$py.women
@@ -108,7 +108,7 @@ sweden_data$py <- sweden_data$py.men + sweden_data$py.women
 
 <!-- instead of repeating the code for each piece of data. -->
 
-```{r}
+```{r cbr-function}
 # Function to compute the Crude Birth Rate (CBR)
 compute_cbr <- function(populationData) {
   populationData %>%
@@ -128,7 +128,7 @@ compute_cbr <- function(populationData) {
 
 <!-- which has a similar behavior. -->
 
-```{r}
+```{r compute-cbr}
 # Compute the CBR for each data set
 
 (world_cbr <- compute_cbr(world_data))
@@ -147,7 +147,7 @@ The CBR is easy to understand but contains both men and women of all ages in the
 
 ### Answer 2
 
-```{r}
+```{r asfr-function}
 # Function to compute Age specific fertility rate (ASFR)
 compute_asfr <- function(pop_data) {
   pop_data %>%
@@ -155,14 +155,14 @@ compute_asfr <- function(pop_data) {
 }
 ```
 
-```{r}
+```{r compute-asfr}
 # Compute ASFR for each data set
 world_data  <- compute_asfr(world_data)
 kenya_data  <- compute_asfr(kenya_data)
 sweden_data <- compute_asfr(sweden_data)
 ```
 
-```{r}
+```{r plot-asfr}
 # plot kenya's asfr
 ggplot(kenya_data, aes(x = age, y = asfr, group = period)) +
   geom_line(aes(linetype = period)) +
@@ -192,7 +192,7 @@ We multiply each age-specific fertility rate rate by 5 because the age range is 
 
 ### Answer 3
 
-```{r}
+```{r tfr-function}
 # Function to compute the total fertility rate (TFR)
 
 compute_tfr <- function(population_data) {
@@ -203,7 +203,7 @@ compute_tfr <- function(population_data) {
 }
 ```
 
-```{r}
+```{r compute-tfr}
 # Compute the TFR for each data set
 (world_tfr <- compute_tfr(world_data))
 (kenya_tfr <- compute_tfr(kenya_data))
@@ -212,7 +212,7 @@ compute_tfr <- function(population_data) {
 
 TFRs decreased in both Kenya and Sweden, as well as in the entire world.
 
-```{r}
+```{r compute-total}
 # Compute totals of women and births in the world by period
 (totals_world <- world_data %>%
   group_by(period) %>%
@@ -238,7 +238,7 @@ Next, we will examine another important demographic process: death. Compute the 
 
 ### Answer 4
 
-```{r}
+```{r cdr-function}
 # Function to compute the Crude death rate (CDR)
 compute_cdr <- function(population_data) {
   population_data %>%
@@ -248,7 +248,7 @@ compute_cdr <- function(population_data) {
 }
 ```
 
-```{r}
+```{r compute-cdr}
 # Compute the CDR for each data set
 (world_cdr <- compute_cdr(world_data))
 (kenya_cdr <- compute_cdr(kenya_data))
@@ -267,7 +267,7 @@ One puzzling finding from the previous question is that the CDR for Kenya during
 
 ### Answer 5
 
-```{r}
+```{r asdr-function}
 # Function to compute Age specific death rate (ASDR)
 compute_asdr <- function(pop_data) {
   pop_data %>%
@@ -275,14 +275,14 @@ compute_asdr <- function(pop_data) {
 }
 ```
 
-```{r}
+```{r compute-asdr}
 # Compute ASDR for each data set
 world_data <- compute_asdr(world_data)
 kenya_data <- compute_asdr(kenya_data)
 sweden_data <- compute_asdr(sweden_data)
 ```
 
-```{r}
+```{r plot-asdr}
 
 # plot kenya's ASDR
 ggplot(kenya_data, aes(x = age, y = asdr, group = period)) +
@@ -310,7 +310,7 @@ One way to understand the difference in the CDR between Kenya and Sweden is to c
 
 ### Answer 6
 
-```{r}
+```{r pop-prop-function}
 # Function to compute population proportion by period
 compute_pop_prop <- function(pop_data) {
   pop_data %>%
@@ -320,14 +320,14 @@ compute_pop_prop <- function(pop_data) {
 }
 ```
 
-```{r}
+```{r compute-pop-prop}
 # Compute population proportion for each data set
 world_data <- compute_pop_prop(world_data)
 kenya_data <- compute_pop_prop(kenya_data)
 sweden_data <- compute_pop_prop(sweden_data)
 ```
 
-```{r}
+```{r compute-cdr}
 # Compute Kenyas CDR Kenya had Sweden's population distribution
 mutate(kenya_data,
   temp_cdr = asdr * sweden_data$popP
