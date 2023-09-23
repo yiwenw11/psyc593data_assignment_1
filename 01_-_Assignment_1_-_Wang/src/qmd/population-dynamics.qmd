@@ -62,7 +62,7 @@ library(ggplot2)
 root_path <- here::here()
 # Some of the subdirectories
 code_path <- file.path(root_path, "src")
-docs_path <- here::here("doc")
+docs_path <- file.path(root_path,"doc")
 data_path <- file.path(root_path, "data")
 figs_path <- file.path(root_path, "results", "figures")
 
