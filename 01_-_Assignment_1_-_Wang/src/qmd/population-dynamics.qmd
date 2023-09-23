@@ -317,7 +317,7 @@ The counterfactual CDR for Kenya is higher than the original CDR of Kenya. If Ke
 compute_pop_prop <- function(pop_data) {
   pop_data %>%
     group_by(period) %>%
-    mutate(popP = py / sum(py)) %>%
+    mutate(pop_prop = py / sum(py)) %>%
     ungroup()
 }
 ```
@@ -332,7 +332,7 @@ sweden_data <- compute_pop_prop(sweden_data)
 ```{r compute-cdr}
 # Compute Kenyas CDR Kenya had Sweden's population distribution
 mutate(kenya_data,
-  temp_cdr = asdr * sweden_data$popP
+  temp_cdr = asdr * sweden_data$pop_prop
 ) %>%
   group_by(period) %>%
   summarise(cdrresweden = sum(temp_cdr))
