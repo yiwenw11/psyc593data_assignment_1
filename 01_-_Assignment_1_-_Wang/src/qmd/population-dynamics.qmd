@@ -310,6 +310,8 @@ One way to understand the difference in the CDR between Kenya and Sweden is to c
 
 ### Answer 6
 
+The counterfactual CDR for Kenya is higher than the original CDR of Kenya. If Kenya had the same population proportion as Sweden, there would only be a slight decline in CDR. The decline would not be as drastic as Kenya's original CDR.
+
 ```{r pop-prop-function}
 # Function to compute population proportion by period
 compute_pop_prop <- function(pop_data) {
